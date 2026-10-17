@@ -516,6 +516,30 @@
   note.innerHTML = 'Concept redesign · not the official WolfPack site · <a href="https://wolfpackadvising.com/">Visit the real site</a>';
   document.body.appendChild(note);
 
+  /* ---------- visibility watchdog ----------
+     Entrance animations start content at opacity 0. If the browser throttles
+     animation frames (background tab, power saving, embedded webviews) those
+     tweens stall and the page looks blank, so force anything that has been on
+     screen and still invisible for a second to its final state. Timers keep
+     running when rAF doesn't. */
+  const watched = () => $$('[data-reveal], .split .w > span, [data-hero-in], .nav, .sw');
+  const seen = new WeakMap();
+  setInterval(() => {
+    watched().forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight || r.width === 0) return;
+      const op = parseFloat(getComputedStyle(el).opacity);
+      const hidden = op < 0.05 || (el.closest('.split') && /matrix\(1, 0, 0, 1, 0, [1-9]/.test(getComputedStyle(el).transform));
+      if (!hidden || el.classList.contains('sw')) { seen.delete(el); return; }
+      if (seen.get(el)) {
+        if (hasGsap) gsap.killTweensOf(el);
+        el.style.opacity = '1'; el.style.transform = 'none'; el.style.visibility = 'visible';
+      } else seen.set(el, true);
+    });
+    const ld = $('.loader');
+    if (ld && performance.now() > 6000) ld.remove();
+  }, 700);
+
   /* keep field keyframes in sync with layout */
   if (hasGsap) ScrollTrigger.addEventListener('refresh', refreshField);
   addEventListener('load', () => { refreshField(); hasGsap && ScrollTrigger.refresh(); });
