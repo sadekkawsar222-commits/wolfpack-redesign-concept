@@ -44,7 +44,8 @@ body {
   color: var(--ink-2);
   font: 400 16px/1.65 var(--f-body);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  /* no overflow-x here: with overflow-x:clip on <html>, a hidden overflow on
+     <body> would make body a scroll container and break every sticky section */
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
