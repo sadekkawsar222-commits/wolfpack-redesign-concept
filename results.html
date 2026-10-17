@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-US" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case Studies | WolfPack</title>
+<meta name="description" content="Proof over promises. These are real clients, real campaigns, and real numbers.">
+<meta name="theme-color" content="#0A1628">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Case Studies | WolfPack">
+<meta property="og:description" content="Proof over promises. These are real clients, real campaigns, and real numbers.">
+<meta property="og:image" content="https://wolfpackadvising.com/wp-content/uploads/2026/09/Group-Photo-2-1024x576.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A1628'/%3E%3Cpath d='M32 12L54 50H10Z M32 12l3 26 19 12 M35 38L10 50' fill='none' stroke='%2300B4D8' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Montserrat:wght@500;600;700;800&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }</script>
+</head>
+<body>
+<div class="atmo"></div>
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-line" aria-hidden="true"></div>
+<div data-include="header"></div>
+
+<main id="content">
+  <section class="page-hero" data-shape="bars" data-x=".5" data-y="-.02" data-s="1.45" data-my="-.58" data-ms=".65" data-mo=".55" data-rot="sway">
+    <div class="wrap page-hero__in">
+      <nav class="crumbs" aria-label="Breadcrumb" data-hero-in><a href="index.html">Home</a>/<span>Case Studies</span></nav>
+      <h1 class="h-xl" data-split data-hero-title style="max-width:760px">Proof over <span class="grad">promises.</span></h1>
+      <p class="lead" data-hero-in style="max-width:560px">These are real clients, real campaigns, and real numbers.</p>
+      <div class="stats" data-hero-in style="max-width:620px;grid-template-columns:repeat(2,1fr)">
+        <div class="stat"><b data-count="28">0</b><span>Case studies</span></div>
+        <div class="stat"><b data-count="782" data-suf="%">0</b><span>Best month ROAS (July 2026)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:20px" data-shape="scatter" data-o=".4" data-tetra=".5" data-mo=".3">
+    <div class="wrap">
+      <div class="filters" data-for=".cases-grid .case" role="toolbar" aria-label="Filter case studies">
+        <button class="chip is-on" data-f="all">All</button>
+        <button class="chip" data-f="Advertising">Advertising</button>
+        <button class="chip" data-f="SEO">SEO</button>
+        <button class="chip" data-f="Web Design">Web Design</button>
+        <button class="chip" data-f="Social Media">Social Media</button>
+        <button class="chip" data-f="CRM">CRM &amp; Reviews</button>
+        <button class="chip" data-f="Email">Email Marketing</button>
+      </div>
+      <h2 class="sr-only">Latest case studies</h2>
+      <div class="cases-grid" id="cases"></div>
+      <p style="margin-top:40px;color:var(--ink-3);font-size:14px">Showing the latest 16 of 28. <a href="https://wolfpackadvising.com/case-studies/" style="color:var(--wf-cyan)">Browse every case study &rarr;</a></p>
+    </div>
+  </section>
+
+  <div data-include="cta"></div>
+</main>
+<div data-include="footer"></div>
+
+<script>
+(() => {
+  const U = 'https://wolfpackadvising.com/wp-content/uploads/2026/09/';
+  const CS = 'https://wolfpackadvising.com/case-studies/';
+  // [metric, label, tags, title, image?, link?, count]
+  const cases = [
+    ['$171,292', 'Total deal value generated (Sept 2025 – Mar 2026)', ['CRM', 'Home Services'], 'From Broken Pipelines To Streamlined Growth for Checklist Inspections', 'CheccklistInspections-DevinNicolePhotography-13-768x512.jpg', 'crm-case-study-checklist-inspections/'],
+    ['782%', 'Best month ROAS (July 2026)', ['Advertising', 'Home Services'], 'Advertising Case Study: HomeTeam of Knoxville'],
+    ['+521%', 'Google Maps views year over year', ['SEO', 'Septic'], 'From Invisible To The Top 3: Tampa Bay Septic SEO Case Study', 'tampa-bay-septic-crew-truck-768x1024.jpg', 'from-invisible-to-the-top-3-tampa-bay-septic-seo-case-study/'],
+    ['+291%', 'Quoted value increase (Mar 2025 vs. Apr 2024)', ['Advertising', 'Home Services'], 'Driving Sustainable Growth Through Trusted Paid Advertising'],
+    ['$8–$11', 'Cost per lead (May – Nov 2025)', ['Advertising', 'Home Services'], 'Elliott’s Journey to Cost-Efficient Leads via Google LSA', 'William-Elliott-with-Wife-1024x768-1-768x576.png', 'advertising-elliots-information-services-llc/'],
+    ['97', 'Google reviews in 12 months', ['CRM', 'Reviews', 'Septic'], 'Driving More Reviews & Visibility for Tampa Bay Septic'],
+    ['+75.5', 'Positions improvement (avg. keyword ranking)', ['SEO', 'Home Services'], 'Enviroquest Grows With Local Service Business SEO'],
+    ['92', 'Desktop PageSpeed score', ['Web Design', 'Home Services'], 'Web Design Case Study: Bigfoot Pest Management'],
+    ['$22.27', 'Cost per lead', ['Advertising', 'Home Services'], 'Ace Home Inspections Competes (and Wins) With Smart Google Ads'],
+    ['$38.32', 'Cost per lead', ['Advertising'], 'LAMDeck Sees 42% Lower Cost Per Lead in Advertising'],
+    ['~39%', 'Average open rate', ['Email', 'Home Services'], 'How WolfPack Advising Powers Bentley’s High-Performing Email Campaigns'],
+    ['Lower', 'Result highlight · cost per conversion', ['Advertising', 'Home Services'], 'Boosting Local Visibility & Leads for Champia Real Estate Inspections'],
+    ['Faster', 'Result highlight · load, convert, rank', ['Web Design', 'Construction'], 'Modern Website Redesign for Buckeye Basement Solutions'],
+    ['Healthier', 'Result highlight · site health & speed', ['Web Design', 'Home Services'], 'Improving Overall Site Health for Champia Real Estate Inspections'],
+    ['Engaged', 'Result highlight · audience activity', ['Social Media', 'Home Services'], 'Strengthening the Digital Footprint Across South Georgia & North Florida'],
+    ['Broader', 'Result highlight · reach & engagement', ['Social Media', 'Home Services'], 'Elevating Visibility in a Competitive Florida Market'],
+  ];
+  const cols = ['#00B4D8', '#E0B050', '#1372E3', '#CBD5E0'];
+  document.getElementById('cases').innerHTML = cases.map(([m, l, tags, t, img, link], i) => `
+    <a class="case${img ? '' : ' case--plain'}" href="${CS + (link || '')}" data-tags="${tags.join(' ')}" data-cursor="Read" data-reveal>
+      ${img ? `<div class="case__img"><img src="${U + img}" alt="" loading="lazy"></div>` : `<svg class="case__tri" viewBox="0 0 40 40" style="color:${cols[i % 4]}"><path d="M20 3L37 34H3Z M20 3l2 21 M37 34L22 24 M3 34l19-10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>`}
+      <div class="case__metric"${/^[A-Z]/.test(m) ? ' style="font-size:clamp(38px,3.6vw,54px)"' : ''}>${m}</div>
+      <div class="case__label">${l}</div>
+      <div class="case__tags">${tags.map(x => `<span>${x === 'Email' ? 'Email Marketing' : x}</span>`).join('')}</div>
+      <h3>${t}</h3>
+      <span class="link-arrow">Read case study <i></i></span>
+    </a>`).join('');
+})();
+</script>
+<script src="assets/js/layout.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script type="module" src="assets/js/particles.js"></script>
+</body>
+</html>

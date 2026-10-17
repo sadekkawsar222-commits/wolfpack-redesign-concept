@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0A1628">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WolfPack QC Audit">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://wolfpackadvising.com/wp-content/uploads/2026/09/Group-Photo-2-1024x576.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A1628'/%3E%3Cpath d='M32 12L54 50H10Z M32 12l3 26 19 12 M35 38L10 50' fill='none' stroke='%2300B4D8' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>WolfPack QC Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#F7F8FA;--card:#fff;--ink:#0A1628;--mute:#4A5568;--line:#D8DFE8;--hi:#B42318;--hi-bg:#FEE4E2;--md:#B54708;--md-bg:#FEF0C7;--lo:#175CD3;--lo-bg:#D1E9FF;--ok:#067647;--ok-bg:#D1FADF}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1628;--card:#0F2847;--ink:#EDF2F7;--mute:#CBD5E0;--line:#1F3557;--hi:#FDA29B;--hi-bg:#55160C;--md:#FEC84B;--md-bg:#4E1D09;--lo:#84CAFF;--lo-bg:#102A56;--ok:#75E0A7;--ok-bg:#053321}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,system-ui,sans-serif}
+  .wrap{max-width:980px;margin:0 auto;padding:48px 16px 80px}
+  h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;line-height:1.2;margin:0}
+  h1{font-size:clamp(28px,5vw,40px)}
+  h2{font-size:22px;margin:48px 0 16px}
+  .sub{color:var(--mute);margin:8px 0 0}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin:20px 0 0;font-size:13px;color:var(--mute)}
+  .score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:32px}
+  .score div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .score b{display:block;font:600 28px "Space Grotesk",sans-serif}
+  .score span{font-size:13px;color:var(--mute)}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);font-weight:600}
+  tr:last-child td{border-bottom:0}
+  .tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:99px;white-space:nowrap}
+  .High{color:var(--hi);background:var(--hi-bg)}.Medium{color:var(--md);background:var(--md-bg)}.Low{color:var(--lo);background:var(--lo-bg)}.Pass{color:var(--ok);background:var(--ok-bg)}
+  .tbl{overflow-x:auto}
+  ul{padding-left:20px}
+  li{margin:4px 0}
+  .note{font-size:13px;color:var(--mute);margin-top:12px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>WolfPack Advising: QC Audit</h1>
+  <p class="sub">Site checked: wolfpackadvising.com, homepage plus Services, About, Team, Results, Who We Help, Get Started and Contact.</p>
+  <div class="meta"><span>Date: 17 Oct 2026</span><span>Viewports: 1280 desktop, 375 mobile</span><span>Method: live in-browser DOM, network and accessibility checks</span></div>
+
+  <div class="score">
+    <div><b>63 / 63</b><span>Homepage internal links return 200</span></div>
+    <div><b>0</b><span>Console errors</span></div>
+    <div><b>29</b><span>Links with no accessible name</span></div>
+    <div><b>8,900px</b><span>Homepage length, 12 sections</span></div>
+    <div><b>4.6s</b><span>Load event (in-app browser, not a lab score)</span></div>
+  </div>
+
+  <h2>What's already working</h2>
+  <div class="tbl"><table>
+    <tr><th>Area</th><th>Check</th><th>Result</th></tr>
+    <tr><td>SEO</td><td>Title is 57 characters, meta description 148, canonical set, OG image present, <code>lang="en-US"</code>, one H1, JSON-LD schema</td><td><span class="tag Pass">Pass</span></td></tr>
+    <tr><td>Links</td><td>Every same-origin link on the homepage (63) resolves with HTTP 200 and no redirects</td><td><span class="tag Pass">Pass</span></td></tr>
+    <tr><td>Stability</td><td>No JavaScript console errors on load</td><td><span class="tag Pass">Pass</span></td></tr>
+    <tr><td>Responsive</td><td>No horizontal overflow at 375px</td><td><span class="tag Pass">Pass</span></td></tr>
+    <tr><td>Content</td><td>Copy is strong: clear positioning, real case-study numbers, a detailed FAQ, a long-form guide</td><td><span class="tag Pass">Pass</span></td></tr>
+  </table></div>
+
+  <h2>Issues found</h2>
+  <div class="tbl"><table>
+    <tr><th>#</th><th>Issue</th><th>Where</th><th>Severity</th><th>Recommendation</th></tr>
+    <tr><td>1</td><td>The design looks like a stock agency template: centred headings, white sections alternating with grey, and the same three-card grid used for services, cases and blog. Almost nothing on the page moves or responds to the visitor, and "Become Alpha" is never shown visually.</td><td>Sitewide</td><td><span class="tag High">High</span></td><td>Give the site a signature visual system and interactions that carry the "pack" idea. This is what the redesign does.</td></tr>
+    <tr><td>2</td><td>The floating "Keep scrolling" mascot sits in the bottom-left corner and covers CTAs and card text as you scroll (seen over "Learn Our Story" and the case-study cards).</td><td>Home</td><td><span class="tag High">High</span></td><td>Remove it, or make it dismissible and hide it whenever a CTA scrolls underneath.</td></tr>
+    <tr><td>3</td><td>29 links have no accessible name: social icons, image-only card links and badge links.</td><td>Home, footer</td><td><span class="tag High">High</span></td><td>Add <code>aria-label</code> to icon links. Mark duplicate image links on cards with <code>aria-hidden</code> and <code>tabindex="-1"</code>.</td></tr>
+    <tr><td>4</td><td>Certification and award badges have empty <code>alt</code>, so screen readers skip trust signals that matter (Google Partner, HubSpot, Clutch).</td><td>Home, About</td><td><span class="tag Medium">Medium</span></td><td>Give real badges descriptive alt text. Put <code>aria-hidden</code> on the marquee's cloned copies.</td></tr>
+    <tr><td>5</td><td>A Google review card ("A1 Property Inspection") shows a name and date with no review text.</td><td>Home reviews</td><td><span class="tag Medium">Medium</span></td><td>Filter out rating-only reviews, or show the stars on their own.</td></tr>
+    <tr><td>6</td><td>Case-study images were still empty dark boxes when the section scrolled into view, so the lazy loading kicks in too late.</td><td>Home, Results</td><td><span class="tag Medium">Medium</span></td><td>Start lazy loading earlier (rootMargin around 600px) and add a low-quality placeholder or a dominant-colour background.</td></tr>
+    <tr><td>7</td><td>Images are served much larger than they're displayed: the logo is 594px wide but shown at 160px, the Google Partner badge 299px at 80px, the team photo 1024px at 455px, review avatars 96px at 36px.</td><td>Home</td><td><span class="tag Medium">Medium</span></td><td>Use <code>srcset</code>/<code>sizes</code>, WebP or AVIF, and an SVG logo.</td></tr>
+    <tr><td>8</td><td>Heavy page: 37 script tags, 2,053 DOM nodes, DOMContentLoaded at 2.5s and load at 4.6s.</td><td>Home</td><td><span class="tag Medium">Medium</span></td><td>Defer third-party widgets (reviews, chat) until interaction and combine scripts.</td></tr>
+    <tr><td>9</td><td>The long-form SEO guide (five tabbed chapters) and the FAQ sit in the middle of the conversion flow, which pushes reviews and the final CTA down to around 7,500px.</td><td>Home</td><td><span class="tag Medium">Medium</span></td><td>Keep the guide but collapse it, and move proof (reviews) higher.</td></tr>
+    <tr><td>10</td><td>On mobile, 39 tap targets are under 32px tall, 16 text elements are under 12px, and the two-line announcement bar pushes the hero photo below the fold.</td><td>Mobile</td><td><span class="tag Medium">Medium</span></td><td>Make tap targets at least 44px, set a 14px text floor, and use a one-line announcement bar.</td></tr>
+    <tr><td>11</td><td>The site loads four font families (Montserrat, Space Grotesk, Inter, JetBrains Mono).</td><td>Sitewide</td><td><span class="tag Low">Low</span></td><td>Preload only the display and body weights you use, and subset the rest.</td></tr>
+    <tr><td>12</td><td>Results claims "Proof, not promises," but several of the 28 case cards show soft highlights ("Noticeable boost in audience engagement") instead of numbers.</td><td>Results</td><td><span class="tag Low">Low</span></td><td>Put quantified cases first and label the qualitative ones as qualitative.</td></tr>
+    <tr><td>13</td><td>Only one CTA wording ("Get Started"), with no secondary route for visitors still researching, such as viewing results or grading their site.</td><td>Home hero</td><td><span class="tag Low">Low</span></td><td>Add a secondary hero CTA ("See the results") and bring the AEO Grader into the page flow.</td></tr>
+    <tr><td>14</td><td>The industries section is a wall of 16 identical pill links with no hierarchy.</td><td>Home</td><td><span class="tag Low">Low</span></td><td>Group them by vertical (Home Services, Construction, Professional), the way the Industries page already does.</td></tr>
+  </table></div>
+  <h2>Redesign QC: round 1</h2>
+  <p class="sub" style="margin:0 0 16px">The same automated checks, run on all six redesigned pages at 1440px and 375px, plus a server-side check of all 101 external links and images.</p>
+  <div class="tbl"><table>
+    <tr><th>Check</th><th>Result</th><th>Fix applied</th></tr>
+    <tr><td>Horizontal overflow at 375px</td><td><span class="tag High">Fail</span> Home (AEO form row), Industries</td><td>The AEO form stacks on mobile, grid children get <code>min-width:0</code>, and <code>overflow-x: clip</code> is set on the root</td></tr>
+    <tr><td>Heading order</td><td><span class="tag Medium">Fail</span> 3 pages jump a level (Services h2→h4, Results h1→h3, Get Started h1→h3)</td><td>Stage titles changed to h3, plus a hidden h2 on Results and a real h2 on Get Started</td></tr>
+    <tr><td>Tap targets under 32px on mobile</td><td><span class="tag Medium">Fail</span> Announcement link, dismiss button, logo, service tabs, "Explore" links, sliders</td><td>All of these are at least 44px on mobile; slider tracks are thicker</td></tr>
+    <tr><td>Text under 11px</td><td><span class="tag Low">Fail</span> "New" pill, concept notice</td><td>Raised to 11px</td></tr>
+    <tr><td>Bug: personalizer links</td><td><span class="tag Low">Fail</span> The saved industry wasn't applied to the mobile bar's CTA link</td><td>The link is now applied after the bar is built</td></tr>
+    <tr><td>Bug: progress rail</td><td><span class="tag Low">Fail</span> Could show at the very top of the page</td><td>Now synced to Lenis scroll events</td></tr>
+    <tr><td>External links and images (101)</td><td><span class="tag Pass">Pass</span> No dead links. Spotify returns 403 to bots but works in a browser.</td><td>None</td></tr>
+    <tr><td>Missing alt text, broken images, duplicate IDs, unlabeled inputs, local 404s, console errors</td><td><span class="tag Pass">Pass</span></td><td>None</td></tr>
+    <tr><td>Meta: favicon, Open Graph, noindex</td><td><span class="tag Medium">Missing</span></td><td>Added to every page. Noindex is there because this is a concept, not the official site.</td></tr>
+  </table></div>
+
+  <h2>Redesign QC: round 2</h2>
+  <div class="tbl"><table>
+    <tr><th>Page</th><th>Overflow 1440 / 375</th><th>Heading jumps</th><th>Missing alt / broken images</th><th>Unlabeled fields</th><th>WebGL</th><th>Result</th></tr>
+    <tr><td>Home</td><td>No / No</td><td>0</td><td>0 / 0</td><td>0</td><td>On</td><td><span class="tag Pass">Pass</span></td></tr>
+    <tr><td>Services</td><td>No / No</td><td>0</td><td>0 / 0</td><td>0</td><td>On</td><td><span class="tag Pass">Pass</span></td></tr>
+    <tr><td>About</td><td>No / No</td><td>0</td><td>0 / 0</td><td>0</td><td>On</td><td><span class="tag Pass">Pass</span></td></tr>
+    <tr><td>Results</td><td>No / No</td><td>0</td><td>0 / 0</td><td>0</td><td>On</td><td><span class="tag Pass">Pass</span></td></tr>
+    <tr><td>Who We Help</td><td>No / No</td><td>0</td><td>0 / 0</td><td>0</td><td>On</td><td><span class="tag Pass">Pass</span></td></tr>
+    <tr><td>Get Started</td><td>No / No</td><td>0</td><td>0 / 0</td><td>0</td><td>On</td><td><span class="tag Pass">Pass</span></td></tr>
+  </table></div>
+  <p class="note">Functional checks in round 2: the industry personalizer updates the copy and CTA links (HVAC → <code>get-started.html?industry=HVAC</code>, which pre-selects HVAC in the form). The calculator is correct (100 leads × 35% × $650 = $22,750 a month). The 3-step form validates and advances. The Results filters work. The mobile menu opens and closes. Known limitation: the reference-style WebGL field needs a GPU; without one, the page falls back to a static gradient.</p>
+  <p class="note">Timing figures come from the in-app browser on one run. Treat them as directional and confirm with PageSpeed Insights or Lighthouse before reporting them to the client.</p>
+</main>
+</body>
+</html>
