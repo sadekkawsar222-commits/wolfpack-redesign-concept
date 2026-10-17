@@ -59,7 +59,10 @@
   $$('[data-split]').forEach(splitWords);
 
   /* ---------- loader + hero intro ---------- */
+  let introDone = false;
   function heroIntro() {
+    if (introDone) return;
+    introDone = true;
     window.wpWantStart = true;
     window.wpStartField && window.wpStartField();
     if (!hasGsap || reduce) return;
@@ -82,6 +85,8 @@
       },
     });
     gsap.set(loader, { clipPath: 'inset(0 0 0% 0)' });
+    // safety net: never let the loader block the page (slow devices, throttled tabs)
+    setTimeout(() => { if (document.body.contains(loader)) { loader.remove(); heroIntro(); } }, 4500);
   } else {
     loader && loader.remove();
     heroIntro();
