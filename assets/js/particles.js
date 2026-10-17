@@ -10,7 +10,9 @@ const PALETTE = [
 ];
 const mobile = matchMedia('(max-width: 760px)').matches;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const N = mobile ? 4200 : 9000;
+const N = mobile ? 2600 : 6000;
+// Global dimmer so the field stays a backdrop and text stays readable.
+const DIM = 0.55;
 
 let seed = 11;
 const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
@@ -202,7 +204,7 @@ try {
   document.documentElement.classList.add('no-webgl');
   throw e;
 }
-const pr = Math.min(devicePixelRatio, mobile ? 1.5 : 1.75);
+const pr = Math.min(devicePixelRatio, mobile ? 1.25 : 1.5);
 renderer.setPixelRatio(pr);
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(35, innerWidth / innerHeight, 0.1, 60);
@@ -360,11 +362,11 @@ function frame(now) {
   const tt = smooth(Math.min(1, Math.max(0, (t - 0.18) / 0.64)));
 
   if (A) {
-    uniforms.uOpacity.value = (A.o + (B.o - A.o) * tt) * smooth(Math.min(1, introT * 1.6));
+    uniforms.uOpacity.value = (A.o + (B.o - A.o) * tt) * smooth(Math.min(1, introT * 1.6)) * DIM;
     const tet = A.tetra + (B.tetra - A.tetra) * tt;
     tetras.forEach((m, i) => {
       const u = m.userData;
-      m.material.opacity = tet * 0.75;
+      m.material.opacity = tet * 0.75 * DIM;
       m.rotation.x += u.spin.x * 0.01; m.rotation.y += u.spin.y * 0.01;
       m.position.set(u.home.x - mouse.x * u.depth * 0.5, u.home.y - mouse.y * u.depth * 0.4 + Math.sin(time * 0.5 + i) * 0.12, u.home.z);
     });

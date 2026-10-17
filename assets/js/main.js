@@ -116,8 +116,6 @@
     const y = scrollY;
     if (nav) {
       nav.classList.toggle('is-solid', y > 30);
-      nav.classList.toggle('is-hidden', y > 500 && y > lastY + 2 && !root.classList.contains('menu-open'));
-      if (y < lastY - 2) nav.classList.remove('is-hidden');
     }
     lastY = y;
     if (line) line.style.transform = `scaleX(${y / Math.max(1, document.documentElement.scrollHeight - innerHeight)})`;
@@ -197,7 +195,7 @@
     if (hasGsap && !reduce) {
       ScrollTrigger.create({
         trigger: st, start: 'top 80%', end: 'bottom 45%', scrub: true,
-        onUpdate: s => { const n = s.progress * sws.length; sws.forEach((w, i) => { w.style.opacity = Math.min(1, Math.max(0.14, n - i)); }); },
+        onUpdate: s => { const n = s.progress * sws.length; sws.forEach((w, i) => { w.style.opacity = Math.min(1, Math.max(0.32, n - i)); }); },
       });
     } else sws.forEach(w => (w.style.opacity = 1));
   }
@@ -524,21 +522,25 @@
      running when rAF doesn't. */
   const watched = () => $$('[data-reveal], .split .w > span, [data-hero-in], .nav, .sw');
   const seen = new WeakMap();
+  const settled = new WeakSet();
   setInterval(() => {
+    if (document.hidden) return;
     watched().forEach(el => {
+      if (settled.has(el)) return;
       const r = el.getBoundingClientRect();
       if (r.bottom < 0 || r.top > innerHeight || r.width === 0) return;
       const op = parseFloat(getComputedStyle(el).opacity);
       const hidden = op < 0.05 || (el.closest('.split') && /matrix\(1, 0, 0, 1, 0, [1-9]/.test(getComputedStyle(el).transform));
-      if (!hidden || el.classList.contains('sw')) { seen.delete(el); return; }
+      if (!hidden || el.classList.contains('sw')) { seen.delete(el); if (op > 0.99) settled.add(el); return; }
       if (seen.get(el)) {
         if (hasGsap) gsap.killTweensOf(el);
         el.style.opacity = '1'; el.style.transform = 'none'; el.style.visibility = 'visible';
+        settled.add(el);
       } else seen.set(el, true);
     });
     const ld = $('.loader');
     if (ld && performance.now() > 6000) ld.remove();
-  }, 700);
+  }, 1000);
 
   /* keep field keyframes in sync with layout */
   if (hasGsap) ScrollTrigger.addEventListener('refresh', refreshField);

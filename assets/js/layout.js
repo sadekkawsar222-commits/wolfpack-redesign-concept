@@ -13,7 +13,7 @@
 </div>
 <header class="nav">
   <div class="wrap nav__in">
-    <a class="nav__logo" href="index.html" aria-label="WolfPack Advising home"><img src="${W}/assets/img/logo-white.png" alt="WolfPack Advising" width="160" height="40"></a>
+    <a class="nav__logo" href="index.html" aria-label="WolfPack Advising home"><img src="assets/img/logo-white.png" alt="WolfPack Advising" width="160" height="40"></a>
     <nav class="nav__links" aria-label="Primary">
       <div class="nav__item">
         <a class="nav__link" href="services.html">Services ${chev}</a>
