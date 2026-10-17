@@ -70,7 +70,6 @@
     const h = $('[data-hero-title]');
     if (h) tl.from($$('.w > span', h), { yPercent: 115, duration: 1.4, stagger: 0.06 }, 0.1);
     tl.from('[data-hero-in]', { y: 30, opacity: 0, duration: 1.2, stagger: 0.09 }, 0.35);
-    tl.from('.nav', { y: -30, opacity: 0, duration: 1 }, 0.2);
   }
   const loader = $('.loader');
   if (loader && !reduce && hasGsap) {
@@ -520,23 +519,27 @@
      tweens stall and the page looks blank, so force anything that has been on
      screen and still invisible for a second to its final state. Timers keep
      running when rAF doesn't. */
-  const watched = () => $$('[data-reveal], .split .w > span, [data-hero-in], .nav, .sw');
-  const seen = new WeakMap();
+  // Anything on screen that is still not at its final state (faded or offset)
+  // for 3 consecutive checks gets snapped to final. That covers both tweens that
+  // never started and tweens frozen part-way, which left the nav half-offset.
+  const watched = () => $$('[data-reveal], .split .w > span, [data-hero-in]');
+  const strikes = new WeakMap();
   const settled = new WeakSet();
+  const isIdentity = t => t === 'none' || /^matrix\(1, 0, 0, 1, 0, 0\)$/.test(t);
   setInterval(() => {
-    if (document.hidden) return;
     watched().forEach(el => {
       if (settled.has(el)) return;
       const r = el.getBoundingClientRect();
       if (r.bottom < 0 || r.top > innerHeight || r.width === 0) return;
-      const op = parseFloat(getComputedStyle(el).opacity);
-      const hidden = op < 0.05 || (el.closest('.split') && /matrix\(1, 0, 0, 1, 0, [1-9]/.test(getComputedStyle(el).transform));
-      if (!hidden || el.classList.contains('sw')) { seen.delete(el); if (op > 0.99) settled.add(el); return; }
-      if (seen.get(el)) {
+      const cs = getComputedStyle(el);
+      if (parseFloat(cs.opacity) > 0.99 && isIdentity(cs.transform)) { settled.add(el); strikes.delete(el); return; }
+      const n = (strikes.get(el) || 0) + 1;
+      strikes.set(el, n);
+      if (n >= 3) {
         if (hasGsap) gsap.killTweensOf(el);
         el.style.opacity = '1'; el.style.transform = 'none'; el.style.visibility = 'visible';
         settled.add(el);
-      } else seen.set(el, true);
+      }
     });
     const ld = $('.loader');
     if (ld && performance.now() > 6000) ld.remove();

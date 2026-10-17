@@ -663,6 +663,25 @@ section { position: relative; }
   .ticker { bottom: 30px; }
   .btn { padding: 16px 24px; }
 }
+/* ---------- richer dropdowns ---------- */
+.mega { overflow: hidden; background: linear-gradient(160deg, rgba(15, 40, 71, .98), rgba(10, 22, 40, .98)); box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .75), 0 0 0 1px rgba(0, 180, 216, .08); }
+.mega::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--wf-grad-cta); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease-out) .05s; }
+.nav__item:hover .mega::before, .nav__item:focus-within .mega::before { transform: scaleX(1); }
+.mega__col { position: relative; border: 1px solid transparent; transition: background .3s, border-color .3s, transform .4s var(--ease-out); }
+.mega__col:hover { border-color: rgba(0, 180, 216, .25); background: radial-gradient(140% 90% at 0% 0%, rgba(0, 180, 216, .14), transparent 60%), rgba(15, 40, 71, .6); transform: translateY(-2px); }
+.mega__tri { transition: transform .7s var(--ease-out), filter .4s; }
+.mega__col:hover .mega__tri { transform: rotate(120deg) scale(1.15); filter: drop-shadow(0 0 10px currentColor); }
+.mega__col li, .mega--sm a { opacity: 0; transform: translateX(-8px); transition: opacity .35s, transform .45s var(--ease-out), color .2s, padding .3s var(--ease-out), background .3s; }
+.nav__item:hover .mega__col li, .nav__item:focus-within .mega__col li,
+.nav__item:hover .mega--sm a, .nav__item:focus-within .mega--sm a { opacity: 1; transform: none; }
+.mega__col li:nth-child(2), .mega--sm a:nth-child(2) { transition-delay: .04s; }
+.mega__col li:nth-child(3), .mega--sm a:nth-child(3) { transition-delay: .08s; }
+.mega__col li:nth-child(4), .mega--sm a:nth-child(4) { transition-delay: .12s; }
+.mega__col li a::after { content: "\2192"; opacity: 0; transform: translateX(-6px); transition: opacity .25s, transform .3s var(--ease-out); color: var(--wf-cyan); }
+.mega__col li a:hover::after { opacity: 1; transform: none; }
+.mega--sm a span { transition: transform .3s var(--ease-out); }
+.mega--sm a:hover span { transform: translateX(4px); color: var(--wf-cyan); }
+
 /* ---------- performance + readability ----------
    backdrop-filter over a live WebGL canvas re-blurs the canvas every frame and
    was the main source of scroll lag, so glass panels use solid fills instead. */
